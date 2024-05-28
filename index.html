@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de KPIs da Loja de Varejo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+        // Taxa de Conversão
+        var dataConversionRate = new google.visualization.DataTable();
+        dataConversionRate.addColumn('string', 'Mês');
+        dataConversionRate.addColumn('number', 'Taxa de Conversão (%)');
+        dataConversionRate.addRows([
+            ['Jan', 8],
+            ['Fev', 9],
+            ['Mar', 7],
+            ['Abr', 6],
+            ['Mai', 10],
+            ['Jun', 11],
+            ['Jul', 9],
+            ['Ago', 8],
+            ['Set', 12],
+            ['Out', 10],
+            ['Nov', 15],
+            ['Dez', 13]
+        ]);
+        var optionsConversionRate = {
+            'title': 'Taxa de Conversão Mensal',
+            'width': 400,
+            'height': 300
+        };
+        var chartConversionRate = new google.visualization.PieChart(document.getElementById('chart_div_conversion_rate'));
+        chartConversionRate.draw(dataConversionRate, optionsConversionRate);
+
+        // Valor Médio do Pedido (AOV)
+        var dataAOV = new google.visualization.DataTable();
+        dataAOV.addColumn('string', 'Categoria');
+        dataAOV.addColumn('number', 'Valor Médio (R$)');
+        dataAOV.addRows([
+            ['Eletrônicos', 200],
+            ['Roupas', 150],
+            ['Alimentos', 100],
+            ['Brinquedos', 80],
+            ['Móveis', 300],
+            ['Beleza', 120]
+        ]);
+        var optionsAOV = {
+            'title': 'Valor Médio do Pedido por Categoria',
+            'width': 400,
+            'height': 300
+        };
+        var chartAOV = new google.visualization.ColumnChart(document.getElementById('chart_div_aov'));
+        chartAOV.draw(dataAOV, optionsAOV);
+
+        // Taxa de Retenção de Clientes
+        var dataRetentionRate = new google.visualization.DataTable();
+        dataRetentionRate.addColumn('string', 'Mês');
+        dataRetentionRate.addColumn('number', 'Taxa de Retenção (%)');
+        dataRetentionRate.addRows([
+            ['Jan', 65],
+            ['Fev', 63],
+            ['Mar', 68],
+            ['Abr', 70],
+            ['Mai', 75],
+            ['Jun', 72],
+            ['Jul', 68],
+            ['Ago', 74],
+            ['Set', 77],
+            ['Out', 73],
+            ['Nov', 80],
+            ['Dez', 78]
+        ]);
+        var optionsRetentionRate = {
+            'title': 'Taxa de Retenção de Clientes Mensal',
+            'width': 400,
+            'height': 300
+        };
+        var chartRetentionRate = new google.visualization.LineChart(document.getElementById('chart_div_retention_rate'));
+        chartRetentionRate.draw(dataRetentionRate, optionsRetentionRate);
+
+        // Tempo Médio de Permanência na Loja
+        var dataAvgTimeInStore = new google.visualization.DataTable();
+        dataAvgTimeInStore.addColumn('string', 'Dia da Semana');
+        dataAvgTimeInStore.addColumn('number', 'Tempo Médio (min)');
+        dataAvgTimeInStore.addRows([
+            ['Segunda', 30],
+            ['Terça', 35],
+            ['Quarta', 33],
+            ['Quinta', 28],
+            ['Sexta', 40],
+            ['Sábado', 45],
+            ['Domingo', 50]
+        ]);
+        var optionsAvgTimeInStore = {
+            'title': 'Tempo Médio de Permanência na Loja por Dia da Semana',
+            'width': 400,
+            'height': 300
+        };
+        var chartAvgTimeInStore = new google.visualization.BarChart(document.getElementById('chart_div_avg_time_in_store'));
+        chartAvgTimeInStore.draw(dataAvgTimeInStore, optionsAvgTimeInStore);
+
+        // Nível de Satisfação do Cliente
+        var dataCustomerSatisfaction = new google.visualization.DataTable();
+        dataCustomerSatisfaction.addColumn('string', 'Mês');
+        dataCustomerSatisfaction.addColumn('number', 'Nível de Satisfação');
+        dataCustomerSatisfaction.addRows([
+            ['Jan', 4.3],
+            ['Fev', 4.5],
+            ['Mar', 4.4],
+            ['Abr', 4.2],
+            ['Mai', 4.6],
+            ['Jun', 4.7],
+            ['Jul', 4.5],
+            ['Ago', 4.4],
+            ['Set', 4.8],
+            ['Out', 4.7],
+            ['Nov', 4.9],
+            ['Dez', 4.6]
+        ]);
+        var optionsCustomerSatisfaction = {
+            'title': 'Nível de Satisfação do Cliente Mensal',
+            'width': 400,
+            'height': 300,
+            'is3D': true,
+        };
+        var chartCustomerSatisfaction = new google.visualization.PieChart(document.getElementById('chart_div_customer_satisfaction'));
+        chartCustomerSatisfaction.draw(dataCustomerSatisfaction, optionsCustomerSatisfaction);
+
+        // Taxa de Abandono de Carrinho
+        var dataCartAbandonmentRate = new google.visualization.DataTable();
+        dataCartAbandonmentRate.addColumn('string', 'Mês');
+        dataCartAbandonmentRate.addColumn('number', 'Taxa de Abandono (%)');
+        dataCartAbandonmentRate.addRows([
+            ['Jan', 25],
+            ['Fev', 23],
+            ['Mar', 22],
+            ['Abr', 20],
+            ['Mai', 19],
+            ['Jun', 18],
+            ['Jul', 17],
+            ['Ago', 15],
+            ['Set', 14],
+            ['Out', 13],
+            ['Nov', 12],
+            ['Dez', 10]
+        ]);
+        var optionsCartAbandonmentRate = {
+            'title': 'Taxa de Abandono de Carrinho Mensal',
+            'width': 400,
+            'height': 300,
+            pieHole: 0.4
+        };
+        var chartCartAbandonmentRate = new google.visualization.PieChart(document.getElementById('chart_div_cart_abandonment_rate'));
+        chartCartAbandonmentRate.draw(dataCartAbandonmentRate, optionsCartAbandonmentRate);
+
+        // Quantidade de Novos Clientes
+        var dataNewCustomers = new google.visualization.DataTable();
+        dataNewCustomers.addColumn('string', 'Mês');
+        dataNewCustomers.addColumn('number', 'Novos Clientes');
+        dataNewCustomers.addRows([
+            ['Jan', 400],
+            ['Fev', 450],
+            ['Mar', 480],
+            ['Abr', 500],
+            ['Mai', 530],
+            ['Jun', 550],
+            ['Jul', 600],
+            ['Ago', 620],
+            ['Set', 650],
+            ['Out', 700],
+            ['Nov', 750],
+            ['Dez', 800]
+        ]);
+        var optionsNewCustomers = {
+            'title': 'Quantidade de Novos Clientes Mensal',
+            'width': 400,
+            'height': 300
+        };
+        var chartNewCustomers = new google.visualization.ColumnChart(document.getElementById('chart_div_new_customers'));
+        chartNewCustomers.draw(dataNewCustomers, optionsNewCustomers);
+    }
+</script>
+</head>
+
+<body>
+    <main>
+        <div class="grid-container">
+            <div class="grid-item" id="chart_div_conversion_rate"></div>
+            <div class="grid-item" id="chart_div_aov"></div>
+            <div class="grid-item" id="chart_div_retention_rate"></div>
+            <div class="grid-item" id="chart_div_avg_time_in_store"></div>
+            <div class="grid-item" id="chart_div_customer_satisfaction"></div>
+            <div class="grid-item" id="chart_div_cart_abandonment_rate"></div>
+            <div class="grid-item" id="chart_div_new_customers"></div>
+        </div>
+
+        <div class="carousel">
+            <button class="prev">&lt;</button>
+            <div id="gallery"></div>
+            <button class="next">&gt;</button>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="http://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
